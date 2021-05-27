@@ -3,22 +3,21 @@ using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Common;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAO
 {
-    public class DAO_Student : DBConnect
+    public class DAO_Class : DBConnect
     {
-        public List<Student> GetAll()
+        public string GetNameClassByID(int? ID)
         {
             DBConnect _dbContext = new DBConnect();
             using (IDbConnection _dbConnection = _dbContext.CreateConnection())
-            { 
-                var output = _dbConnection.Query<Student>($"select * from STUDENT").ToList();
+            {
+                var outputObj = _dbConnection.Query<Class>($"select CLASS_NAME from CLASS where CLASS_ID ='{ID}'").ToList();
+                var output = outputObj[0].Class_Name;
                 return output;
             }
         }

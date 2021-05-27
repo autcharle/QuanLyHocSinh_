@@ -15,10 +15,10 @@ namespace DAO
         {
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
-        protected IDbConnection _connection = new SqlConnection(CnnVal("QLHSDb"));
+        //protected IDbConnection _connection = new SqlConnection(CnnVal("QLHSDb"));
         public IDbConnection CreateConnection()
         {
-            string strConString = ConfigurationManager.ConnectionStrings["QLHSDb"].ToString();
+            string strConString = CnnVal("QLHSDb");
             return new SqlConnection(strConString);
         }
     }

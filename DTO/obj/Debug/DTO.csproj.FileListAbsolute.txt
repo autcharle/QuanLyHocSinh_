@@ -1,0 +1,5 @@
+C:\Users\soled\Desktop\QuanLyHocSinh\DTO\bin\Debug\DTO.dll
+C:\Users\soled\Desktop\QuanLyHocSinh\DTO\bin\Debug\DTO.pdb
+C:\Users\soled\Desktop\QuanLyHocSinh\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\soled\Desktop\QuanLyHocSinh\DTO\obj\Debug\DTO.dll
+C:\Users\soled\Desktop\QuanLyHocSinh\DTO\obj\Debug\DTO.pdb

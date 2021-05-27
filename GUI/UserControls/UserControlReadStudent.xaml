@@ -27,7 +27,7 @@
                     <GridViewColumn Header="STT" Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding IDStudent}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                <TextBlock Text="{Binding Student_ID}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -35,7 +35,7 @@
                     <GridViewColumn Header="HỌ VÀ TÊN" Width="270">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Name}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                <TextBlock Text="{Binding FullName}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public partial class Subject
+    public partial class Class
     {
         //DoNotCallOverridableMethodsInConstructors
-        public Subject()
+        public Class()
         {
-            this.Points = new HashSet<Point>();
+            this.Students = new HashSet<Student>();
         }
 
-        public int Subject_ID { get; set; }
-        public string Subject_Name { get; set; }
+        public int Class_ID { get; set; }
+        public string Class_Name { get; set; }
 
         //CollectionPropertiesShouldBeReadOnly
-        public virtual ICollection<Point> Points { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
     }
 }
