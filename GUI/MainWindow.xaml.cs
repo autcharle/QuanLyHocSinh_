@@ -31,7 +31,7 @@ namespace GUI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DataContext = new UserControlAddStudent();
+            DataContext = new UserControlReadStudent();
         }
 
         private void Polygon_MouseDown(object sender, MouseButtonEventArgs e)
@@ -64,12 +64,43 @@ namespace GUI
 
         private void ToUCStudentButton_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new UserControlAddStudent();
+            DataContext = new UserControlReadStudent();
         }
 
         private void ToUCClassButton_Click(object sender, RoutedEventArgs e)
         {
+            DataContext = new UserControlReadClass();
+        }
 
+        private void ToUCSubjectButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new UserControlReadSubject();
+        }
+
+        private void ToUCMarkButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new UserControlReadMark();
+        }
+
+        private void ToUCConfigButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new UserControlReadConfig();
+        }
+
+        private void AddButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (ToUCStudentButton.IsChecked == true)
+            {
+                DataContext = new UserControlCreateStudent();
+            }
+            else if (ToUCClassButton.IsChecked == true)
+            {
+                DataContext = new UserControlCreateClass();
+            }
+            else
+            {
+                //do nothing
+            }
         }
     }
 }

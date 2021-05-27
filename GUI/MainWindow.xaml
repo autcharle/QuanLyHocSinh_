@@ -173,14 +173,20 @@
                         Style="{StaticResource TopNavigationMenuStyle}"
                         Click="ToUCClassButton_Click"/>
                     <RadioButton
+                        x:Name="ToUCSubjectButton"
                         Content="MÔN HỌC"
-                        Style="{StaticResource TopNavigationMenuStyle}"/>
+                        Style="{StaticResource TopNavigationMenuStyle}"
+                        Click="ToUCSubjectButton_Click"/>
                     <RadioButton
+                        x:Name="ToUCMarkButton"
                         Content="THÀNH TÍCH"
-                        Style="{StaticResource TopNavigationMenuStyle}"/>
+                        Style="{StaticResource TopNavigationMenuStyle}"
+                        Click="ToUCMarkButton_Click"/>
                     <RadioButton
+                        x:Name="ToUCConfigButton"
                         Content="QUY ĐỊNH"
-                        Style="{StaticResource TopNavigationMenuStyle}"/>
+                        Style="{StaticResource TopNavigationMenuStyle}"
+                        Click="ToUCConfigButton_Click"/>
                 </StackPanel>
                 <!--#endregion-->
             </Grid>
@@ -195,7 +201,14 @@
 
             <!--#region Menu-->
             <StackPanel>
-
+                <materialDesign:PackIcon Height="50"
+                                         Width="50"
+                                         HorizontalAlignment="Center"
+                                         Margin="25"
+                                         Kind="AddBold"
+                                         Foreground="{StaticResource SecondaryColor}"
+                                         Name="AddButton"
+                                         MouseDown="AddButton_MouseDown"/>
             </StackPanel>
             <!--#endregion-->
 

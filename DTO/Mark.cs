@@ -15,10 +15,12 @@ namespace DTO
         }
 
         public int IDMark { get; set; }
-        public Nullable<int> IDSubject { get; set; }
-        public Nullable<double> Score15min { get; set; }
-        public Nullable<double> Score60min { get; set; }
-        public Nullable<double> ScoreFinal { get; set; }
+        public int? IDSubject { get; set; }
+        public int? IDStudent { get; set; }
+        public int? IDSemester { get; set; }
+        public double? Score15min { get; set; }
+        public double? Score60min { get; set; }
+        public double? ScoreFinal { get; set; }
 
         public virtual Subject Subject { get; set; }
         //CollectionPropertiesShouldBeReadOnly

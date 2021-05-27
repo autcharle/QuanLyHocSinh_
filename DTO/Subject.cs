@@ -14,7 +14,7 @@ namespace DTO
             this.Marks = new HashSet<Mark>();
         }
 
-        public int IdSubject { get; set; }
+        public int IDSubject { get; set; }
         public int? IDSemesterClassroom { get; set; }
         public string NameSubject { get; set; }
 

@@ -45,7 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO_Classroom.cs" />
+    <Compile Include="DAO_Mark.cs" />
     <Compile Include="DAO_Student.cs" />
+    <Compile Include="DAO_Subject.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -16,6 +16,18 @@
             <SolidColorBrush x:Key="ThemeLimeColor" Color="#B0C85F"/>
             <!--#endregion-->
 
+            <!--#region Grid View Column Header Style-->
+            <Style x:Key="GridViewColumnHeaderStyle" TargetType="GridViewColumnHeader">
+                <Setter Property="Foreground" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+            <!--#endregion-->
+            
+            <!--#region List View Data Text Block Style-->
+            <Style x:Key="ListViewDataTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
             <!--Top Navigation Menu Style-->
             <Style x:Key="TopNavigationMenuStyle" TargetType="{x:Type RadioButton}">
                 <Setter Property="VerticalAlignment" Value="Center"/>
