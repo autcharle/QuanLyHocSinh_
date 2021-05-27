@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Dapper;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,12 +13,10 @@ namespace DAO
 {
     public class DAO_Student : DBConnect
     {
-        public DataTable GetAll()
+        public List<Student> GetAll()
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Student", _connection);
-            DataTable dtStudent = new DataTable();
-            da.Fill(dtStudent);
-            return dtStudent;
+            var output = _connection.Query<Student>($"select * from Student").ToList();
+            return output;
         }
     }
 }

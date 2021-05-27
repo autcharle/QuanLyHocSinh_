@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,6 +13,6 @@ namespace BUS
     {
         DAO_Student _daoStudent = new DAO_Student();
 
-        public DataTable GetAllStudent() => _daoStudent.GetAll();
+        public List<Student> GetAllStudent() => _daoStudent.GetAll();
     }
 }

@@ -31,7 +31,7 @@ namespace GUI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DataContext = _busStudent.GetAllStudent();
+            DataContext = new UserControlAddStudent();
         }
 
         private void Polygon_MouseDown(object sender, MouseButtonEventArgs e)
