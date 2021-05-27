@@ -15,7 +15,9 @@ namespace DAO
     {
         public List<Student> GetAll()
         {
-            var output = _connection.Query<Student>($"select * from Student").ToList();
+            DBConnect _dbContext = new DBConnect();
+            IDbConnection dbConnection = _dbContext.CreateConnection();
+            var output = dbConnection.Query<Student>($"select * from Student").ToList();
             return output;
         }
     }
