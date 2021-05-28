@@ -66,6 +66,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extensions\ValidationRules\NotEmptyValidationRule.cs" />
+    <Compile Include="Extensions\ValidationRules\RequiredAgeValidationRule.cs" />
     <Compile Include="UserControls\UserControlCreateClass.xaml.cs">
       <DependentUpon>UserControlCreateClass.xaml</DependentUpon>
     </Compile>
@@ -87,6 +89,7 @@
     <Compile Include="UserControls\UserControlReadSubject.xaml.cs">
       <DependentUpon>UserControlReadSubject.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\UserControlCreateStudentVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
