@@ -13,6 +13,21 @@ namespace DAO
 {
     public class DAO_Student : DBConnect
     {
+        public void InsertAStudent(Student _student)
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                var affectedRows = _dbConnection.Execute($"insert into STUDENT (FULLNAME,GENDER,BIRTHDAY,ADDRESS,EMAIL) values (@FullName,@Gender,@Birthday,@Address,@Email)", new
+                {
+                    FullName = _student.FullName,
+                    Gender = _student.Gender,
+                    Birthday = _student.Birthday,
+                    Address = _student.Address,
+                    Email = _student.Email
+                }) ;
+            }
+        }
         public List<Student> GetAll()
         {
             DBConnect _dbContext = new DBConnect();

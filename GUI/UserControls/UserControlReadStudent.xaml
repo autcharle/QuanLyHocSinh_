@@ -15,7 +15,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="1"
-            Text="DANH SÁCH HỌC SINH"
+            Text="TRA CỨU HỌC SINH"
                    FontSize="35"
                    FontWeight="DemiBold"
                    Foreground="{StaticResource HeaderColor}"

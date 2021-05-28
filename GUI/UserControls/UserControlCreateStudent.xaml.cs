@@ -24,6 +24,7 @@ namespace GUI.UserControls
     {
         List<Student> _students = new List<Student>();
         BUS_Student _busStudent = new BUS_Student();
+        Student _student = new Student();
         public UserControlCreateStudent()
         {
             InitializeComponent();
@@ -31,8 +32,24 @@ namespace GUI.UserControls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            _students = _busStudent.GetAllStudent();
-            ListBox.ItemsSource = _students; 
+            
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            _student.FullName = FullNameTextBox.Text;
+            _student.Gender = GenderCombobox.Text;
+            _student.Birthday = (DateTime)BirthdayPicker.SelectedDate;
+            _student.Address = AddressTextBox.Text;
+            _student.Email = EmailTextBox.Text;
+            if (_busStudent.InsertAStudent(_student))
+            {
+                MessageBox.Show("Thêm thành công, thông tin học sinh đã được tiếp nhận!");
+            }
+            else
+            {
+                MessageBox.Show("Thêm thất bại, vui lòng xem lại các trường dữ liệu!");
+            }
         }
     }
 }

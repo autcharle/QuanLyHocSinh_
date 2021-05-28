@@ -14,6 +14,18 @@ namespace BUS
         DAO_Student _daoStudent = new DAO_Student();
         DAO_Class _daoClassroom = new DAO_Class();
         BUS_Point _busMark = new BUS_Point();
+        BUS_Config _busConfig = new BUS_Config();
+        public bool InsertAStudent(Student _student)
+        {
+            int _maxAge = _busConfig.GetMaxAge();
+            int _minAge = _busConfig.GetMinAge();
+            if (_student.FullName == "") return false;
+            if (DateTime.Now.Year - _student.Birthday.Year < _minAge || DateTime.Now.Year - _student.Birthday.Year > _maxAge) return false;
+            if (_student.Address == "") return false;
+            if (_student.Email == "") return false;
+            _daoStudent.InsertAStudent(_student);
+            return true;
+        }
 
         public List<Student> GetAllStudent() => _daoStudent.GetAll();
         public List<Student> GetStudentByID(int? IDClass) => _daoStudent.GetStudentByClassID(IDClass);

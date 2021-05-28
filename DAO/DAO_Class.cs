@@ -17,6 +17,7 @@ namespace DAO
             using (IDbConnection _dbConnection = _dbContext.CreateConnection())
             {
                 var outputObj = _dbConnection.Query<Class>($"select CLASS_NAME from CLASS where CLASS_ID ='{ID}'").ToList();
+                if (outputObj.Count == 0) return "";
                 var output = outputObj[0].Class_Name;
                 return output;
             }

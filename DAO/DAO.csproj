@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO_Class.cs" />
+    <Compile Include="DAO_Config.cs" />
     <Compile Include="DAO_Point.cs" />
     <Compile Include="DAO_Student.cs" />
     <Compile Include="DAO_Subject.cs" />
