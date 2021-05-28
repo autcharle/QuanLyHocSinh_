@@ -21,5 +21,15 @@ namespace DAO
                 return output;
             }
         }
+
+        public List<Class> GetAll()
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                var output = _dbConnection.Query<Class>($"select * from CLASS").ToList();
+                return output;
+            }
+        }
     }
 }

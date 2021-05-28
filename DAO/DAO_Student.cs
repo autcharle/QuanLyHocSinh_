@@ -22,5 +22,35 @@ namespace DAO
                 return output;
             }
         }
+
+        public List<Student> GetStudentByClassID(int? IDClass)
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                var output = _dbConnection.Query<Student>($"select * from STUDENT where CLASS_ID = '{IDClass}'").ToList();
+                return output;
+            }
+        }
+
+        public List<Student> GetStudentByName(string NameStudent)
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                var output = _dbConnection.Query<Student>($"select * from STUDENT where FULLNAME like N'%{NameStudent}%'").ToList();
+                return output;
+            }
+        }
+
+        public List<Student> GetStudentByNameAndClassID(string NameStudent, int? IDClass)
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                var output = _dbConnection.Query<Student>($"select * from STUDENT where FULLNAME like N'%{NameStudent}%' and CLASS_ID = '{IDClass}'").ToList();
+                return output;
+            }
+        }
     }
 }

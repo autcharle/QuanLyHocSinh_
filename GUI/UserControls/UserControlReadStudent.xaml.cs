@@ -24,6 +24,8 @@ namespace GUI.UserControls
     {
         List<Student> _students = new List<Student>();
         BUS_Student _busStudent = new BUS_Student();
+        BUS_Class _busClass = new BUS_Class();
+        List<Class> _classNames = new List<Class>();
         public UserControlReadStudent()
         {
             InitializeComponent();
@@ -32,7 +34,81 @@ namespace GUI.UserControls
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             _students = _busStudent.ReadAllStudent();
+            NullListCheck(_students);
             ListViewStudent.ItemsSource = _students;
+            _classNames = _busClass.GetAllClass();
+            ClassComboBox.ItemsSource = _classNames;
+        }
+
+        private void ClassComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ClearFilterButton.Visibility == Visibility.Collapsed)
+                ClearFilterButton.Visibility = Visibility.Visible;
+            DisplayStudent();
+        }
+
+        private void ClearFilterButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ClassComboBox.SelectedItem = null;
+            ClearFilterButton.Visibility = Visibility.Collapsed;
+        }
+
+        private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                DisplayStudent();
+            }
+        }
+        private void DisplayStudent()
+        {
+            if (SearchTextBox.Text == null)
+            {
+                if (ClassComboBox.SelectedItem == null)
+                {
+                    _students = _busStudent.ReadAllStudent();
+                    NullListCheck(_students);
+                    ListViewStudent.ItemsSource = _students;
+                }
+
+                else
+                {
+                    int IDClass = _classNames[ClassComboBox.SelectedIndex].Class_ID;
+                    _students = _busStudent.ReadStudentByClassID(IDClass);
+                    NullListCheck(_students);
+                    ListViewStudent.ItemsSource = _students;
+                }
+            }
+            else
+            {
+                if (ClassComboBox.SelectedItem == null)
+                {
+                    string NameStudent = SearchTextBox.Text;
+                    _students = _busStudent.ReadStudentByName(NameStudent);
+                    NullListCheck(_students);
+                    ListViewStudent.ItemsSource = _students;
+                }
+
+                else
+                {
+                    string NameStudent = SearchTextBox.Text;
+                    int IDClass = _classNames[ClassComboBox.SelectedIndex].Class_ID;
+                    _students = _busStudent.ReadStudentByNameAndClassID(NameStudent, IDClass);
+                    NullListCheck(_students);
+                    ListViewStudent.ItemsSource = _students;
+                }
+            }
+        }
+        private void NullListCheck(List<Student> Students)
+        {
+            if(Students.Count == 0)
+            {
+                NullListMessageTextBlock.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                NullListMessageTextBlock.Visibility = Visibility.Hidden;
+            }
         }
     }
 }
