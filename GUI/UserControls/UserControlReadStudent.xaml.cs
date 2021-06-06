@@ -70,7 +70,6 @@ namespace GUI.UserControls
                     NullListCheck(_students);
                     ListViewStudent.ItemsSource = _students;
                 }
-
                 else
                 {
                     int IDClass = _classNames[ClassComboBox.SelectedIndex].Class_ID;

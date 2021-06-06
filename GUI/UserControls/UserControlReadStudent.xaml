@@ -62,7 +62,7 @@
                     <GridViewColumn Header="TB HỌC KỲ 2" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Score2ndSem}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                <TextBlock Text="{Binding Class_ID}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -124,14 +124,13 @@
                 <materialDesign:PackIcon VerticalAlignment="Bottom"
                                  Height="35"
                                  Width="35"
-                                         Margin="5 2"
+                                 Margin="5 2"
                                  Kind="CloseCircleOutline"
                                  Foreground="Gray"
                                  Name="ClearFilterButton"
                                  MouseDown="ClearFilterButton_MouseDown"
                                  Visibility="Collapsed"/>
             </StackPanel>
-            
         </DockPanel>
     </Grid>
 </UserControl>

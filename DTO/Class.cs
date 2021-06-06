@@ -17,6 +17,10 @@ namespace DTO
         public int Class_ID { get; set; }
         public string Class_Name { get; set; }
 
+        public int Class_Group { get; set; }
+        public int NumberMember { get; set; }
+        int _selectedItem { get; set; }
+
         //CollectionPropertiesShouldBeReadOnly
         public virtual ICollection<Student> Students { get; set; }
     }

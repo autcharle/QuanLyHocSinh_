@@ -38,7 +38,7 @@ namespace DAO
             }
         }
 
-        public List<Student> GetStudentByClassID(int? IDClass)
+        public List<Student> GetStudentByClassID(int IDClass)
         {
             DBConnect _dbContext = new DBConnect();
             using (IDbConnection _dbConnection = _dbContext.CreateConnection())

@@ -20,5 +20,6 @@ namespace BUS
         {
             return (int)_daoConfig.GetAll()[0].Max_Age;
         }
+       
     }
 }

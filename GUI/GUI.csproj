@@ -89,6 +89,7 @@
     <Compile Include="UserControls\UserControlReadSubject.xaml.cs">
       <DependentUpon>UserControlReadSubject.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\UserControlCreateClassVM.cs" />
     <Compile Include="ViewModels\UserControlCreateStudentVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

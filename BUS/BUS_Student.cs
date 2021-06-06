@@ -28,7 +28,7 @@ namespace BUS
         }
 
         public List<Student> GetAllStudent() => _daoStudent.GetAll();
-        public List<Student> GetStudentByID(int? IDClass) => _daoStudent.GetStudentByClassID(IDClass);
+        public List<Student> GetStudentByID(int IDClass) => _daoStudent.GetStudentByClassID(IDClass);
         public List<Student> GetStudentByName(string NameStudent) => _daoStudent.GetStudentByName(NameStudent);
         public List<Student> GetStudentByNameAndClassID(string NameStudent, int? IDClass) => _daoStudent.GetStudentByNameAndClassID(NameStudent, IDClass);
 
@@ -49,12 +49,11 @@ namespace BUS
                 _student.NameClass = _daoClassroom.GetNameClassByID(_student.Class_ID);
                 _student.Score1stSem = Math.Round((double)_busMark.CalAverageAllSubjectMarkBySemester(_student.Student_ID, 1),2);
                 _student.Score2ndSem = Math.Round((double)_busMark.CalAverageAllSubjectMarkBySemester(_student.Student_ID, 2),2);
-
             }
             return output;
         }
 
-        public List<Student> ReadStudentByClassID(int? IDClass)
+        public List<Student> ReadStudentByClassID(int IDClass)
         {
             var output = GetStudentByID(IDClass);
             foreach (var _student in output)

@@ -102,5 +102,10 @@ namespace GUI
                 //do nothing
             }
         }
+        public void MovePageFromClassToStudent(object sender, MouseButtonEventArgs e)
+        {
+            ToUCClassButton.IsChecked = false;
+            ToUCStudentButton.IsChecked = true;
+        }
     }
 }
