@@ -41,5 +41,14 @@ namespace BUS
             }
             return output / _ListMark.Count();
         }
+
+        public bool InsertPointForStudent(Point _point)
+        {
+            if (_point.Point_15 > 10 || _point.Point_15 <0) return false;
+            if (_point.Point_45 > 10 || _point.Point_45 < 0) return false;
+            if (_point.Point_CK > 10 || _point.Point_CK < 0) return false;
+            _daoMark.InsertPointForStudent(_point);
+            return true;
+        }
     }
 }

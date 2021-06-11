@@ -13,7 +13,7 @@ namespace BUS
     {
         DAO_Student _daoStudent = new DAO_Student();
         DAO_Class _daoClassroom = new DAO_Class();
-        BUS_Point _busMark = new BUS_Point();
+        BUS_Point _busMark = new BUS_Point();   
         BUS_Config _busConfig = new BUS_Config();
         public bool InsertAStudent(Student _student)
         {
@@ -89,5 +89,6 @@ namespace BUS
             }
             return output;
         }
+
     }
 }

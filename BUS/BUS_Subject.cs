@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace BUS
     {
         DAO_Subject _daoSubject = new DAO_Subject();
         public int CountSubject() => _daoSubject.Count();
+        public List<Subject> getAllSubject() => _daoSubject.GetAll();
     }
 }

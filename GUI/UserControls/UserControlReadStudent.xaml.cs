@@ -109,5 +109,13 @@ namespace GUI.UserControls
                 NullListMessageTextBlock.Visibility = Visibility.Hidden;
             }
         }
+
+        private void buttonInputMark_Click(object sender, RoutedEventArgs e)
+        {
+            int idst = _students[ListViewStudent.SelectedIndex].Student_ID;
+            WindowInputMarkForStudent windowInputMarkForStudent = new WindowInputMarkForStudent(idst);
+            windowInputMarkForStudent.Show();
+
+        }
     }
 }
