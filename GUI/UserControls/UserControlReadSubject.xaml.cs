@@ -22,8 +22,6 @@ namespace GUI.UserControls
     /// </summary>
     /// 
 
-
-
     public partial class UserControlReadSubject : UserControl
     {
 
@@ -35,6 +33,9 @@ namespace GUI.UserControls
 
         BUS_Class _busClass = new BUS_Class();
         List<Class> classList = new List<Class>();
+
+		BUS_Student _busStudent = new BUS_Student();
+		List<Student> studentList = new List<Student>();
 
         public UserControlReadSubject()
         {
@@ -65,14 +66,25 @@ namespace GUI.UserControls
 			return 0;
 		}
 
+		private int getIdStudent(string fullName)
+		{
+			foreach (var student in studentList)
+			{
+				if (student.FullName.CompareTo(fullName) == 0)
+				{
+					return student.Student_ID;
+				}
+			}
+			return 0;
+		}
+
 		private int count() => studentPointSubjectList.Count();
 
 		private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            studentPointSubjectList = _busStudentPointSubject.getAllStudentPointSubject();
-            ListViewPoint.ItemsSource = studentPointSubjectList;
 			classList = _busClass.GetAllClass();
 			subjectList = _busSubject.getAllSubject();
+			studentList = _busStudent.GetAllStudent();
 			comboBoxClass.ItemsSource = classList;
 			comboBoxSubject.ItemsSource = subjectList;
 		}
@@ -82,76 +94,56 @@ namespace GUI.UserControls
 			int selectClass = comboBoxClass.SelectedIndex;
 			int selectSubject = comboBoxSubject.SelectedIndex;
 			int semester = comboBoxSemester.SelectedIndex;
-			int selectSemester = 0;
-			if (semester == -1)
-				selectSemester = 0;
-			else if (semester == 0)
-				selectSemester = 1;
-			else if (semester == 1)
-				selectSemester = 2;
-
-
-			if (selectClass == -1)
+			if(selectClass == -1)
 			{
-				if (selectSubject == -1)
-				{
-					if(selectSemester == 0)
-					{
-						studentPointSubjectList = _busStudentPointSubject.getAllStudentPointSubject();
-						ListViewPoint.ItemsSource = studentPointSubjectList;
-					}
-					else
-					{
-						studentPointSubjectList = _busStudentPointSubject.getBySemester(selectSemester);
-						ListViewPoint.ItemsSource = studentPointSubjectList;
-					}
-				}
-				else
-				{
-					int idSu = getIdSubject(subjectList[selectSubject].Subject_Name);
-					if (selectSemester == 0)
-					{
-						studentPointSubjectList = _busStudentPointSubject.getByIdSubject(idSu);
-						ListViewPoint.ItemsSource = studentPointSubjectList;
-					}
-					else
-					{
-						studentPointSubjectList = _busStudentPointSubject.getBySemesterAndIdSubject(selectSemester,idSu);
-						ListViewPoint.ItemsSource = studentPointSubjectList;
-					}
-				}
+				MessageBox.Show("Vui Lòng Chọn Lớp!", "Notice");
+			}
+			else if (selectSubject == -1 )
+			{
+				MessageBox.Show("Vui Lòng Chọn Môn Học!", "Notice");
+			}
+			else if(semester == -1)
+			{
+				MessageBox.Show("Vui Lòng Chọn Học Kì!", "Notice");
 			}
 			else
 			{
+				int selectSemester = 0;
+				if (semester == 0)
+					selectSemester = 1;
+				else if (semester == 1)
+					selectSemester = 2;
+
 				int idCl = getIdClass(classList[selectClass].Class_Name);
-				if (selectSubject == -1)
+				int idSu = getIdSubject(subjectList[selectSubject].Subject_Name);
+				studentPointSubjectList = _busStudentPointSubject.getStudentPointSubject(selectSemester, idCl, idSu);
+				int i = 0;
+				foreach(var StudentPointSubject in studentPointSubjectList)
 				{
-					if (selectSemester == 0)
-					{
-						studentPointSubjectList = _busStudentPointSubject.getByIdClass(idCl);
-						ListViewPoint.ItemsSource = studentPointSubjectList;
-					}
-					else
-					{
-						studentPointSubjectList = _busStudentPointSubject.getBySemesterAndIdClass(selectSemester,idCl);
-						ListViewPoint.ItemsSource = studentPointSubjectList;
-					}
-				}
-				else
-				{
-					int idSu = getIdSubject(subjectList[selectSubject].Subject_Name);
-					if (selectSemester == 0)
-					{
-						studentPointSubjectList = _busStudentPointSubject.getByIdClassAndIdSubject(idCl,idSu);
-						ListViewPoint.ItemsSource = studentPointSubjectList;
-					}
-					else
-					{
-						studentPointSubjectList = _busStudentPointSubject.getStudentPointSubject(selectSemester,idCl,idSu);
-						ListViewPoint.ItemsSource = studentPointSubjectList;
-					}
-				}
+					i++;
+					StudentPointSubject.Stt = i;
+				}	
+				ListViewPoint.ItemsSource = studentPointSubjectList;
 			}
 		}
+
+		private void buttonInputMark_Click(object sender, RoutedEventArgs e)
+		{
+			int selectClass = comboBoxClass.SelectedIndex;
+			int selectSubject = comboBoxSubject.SelectedIndex;
+			int selectSemester = comboBoxSemester.SelectedIndex;
+
+			int semester = 0;
+			if (selectSemester == 0)
+				semester = 1;
+			else if (selectSemester == 1)
+				semester = 2;
+
+			int idSu = getIdSubject(subjectList[selectSubject].Subject_Name);
+			int idStudent = getIdStudent(studentPointSubjectList[ListViewPoint.SelectedIndex].FullName);
+			WindowInputMarkForStudent windowInputMarkForStudent = new WindowInputMarkForStudent(idStudent,semester,idSu);
+			windowInputMarkForStudent.Show();
+		}
+
 	}
 }

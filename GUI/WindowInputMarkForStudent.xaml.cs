@@ -22,26 +22,16 @@ namespace GUI
 	/// </summary>
 	public partial class WindowInputMarkForStudent : Window
 	{
-		BUS_Subject _busSubject = new BUS_Subject();
-		List<Subject> subjectList = new List<Subject>();
-
 		BUS_Point _busPoint = new BUS_Point();
 		private int idStudent { get; set; }
-		public WindowInputMarkForStudent(int idSt)
+		private int semester { get; set; }
+		private int idSubject { get; set; }
+		public WindowInputMarkForStudent(int idStudentInput, int semeterInput, int idSubjectInput)
 		{
-			idStudent = idSt;
+			idStudent = idStudentInput;
+			semester = semeterInput;
+			idSubject = idSubjectInput;
 			InitializeComponent();
-		}
-
-		private void Loaded_Window(object sender, RoutedEventArgs e)
-		{
-			subjectList = _busSubject.getAllSubject();
-			foreach(var sub in subjectList)
-			{
-				comboBoxSubject.Items.Add(sub.Subject_Name);
-			}
-			comboBoxSemester.Items.Add("1");
-			comboBoxSemester.Items.Add("2");
 		}
 
 		private void buttonInputMark_Click(object sender, RoutedEventArgs e)
@@ -52,14 +42,7 @@ namespace GUI
 			double mark15 = double.Parse(mark15Input);
 			double mark45 = double.Parse(mark45Input);
 			double markCk = double.Parse(markCkInput);
-			int idSubject = subjectList[comboBoxSubject.SelectedIndex].Subject_ID;
-			int semester = 0;
-			if (comboBoxSemester.SelectedIndex == -1)
-				semester = 0;
-			else if (comboBoxSemester.SelectedIndex == 0)
-				semester = 1;
-			else if (comboBoxSemester.SelectedIndex == 1)
-				semester = 2;
+			
 			if (mark15<0 || mark15 > 10)
 			{
 				MessageBox.Show("Điểm không được <0 và > 10", "Notice");

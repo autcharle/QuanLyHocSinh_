@@ -132,6 +132,5 @@
                                  Visibility="Collapsed"/>
             </StackPanel>
         </DockPanel>
-        <Button x:Name="buttonInputMark" Content="Nhập Điểm" HorizontalAlignment="Center" Margin="648,33,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124" RenderTransformOrigin="0.467,0.078" Click="buttonInputMark_Click"/>
     </Grid>
 </UserControl>

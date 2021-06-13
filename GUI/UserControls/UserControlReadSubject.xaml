@@ -21,7 +21,7 @@
                    Margin="10"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Bottom"/>
-        
+        <Button x:Name="buttonInputMark" Content="Nhập Điểm" HorizontalAlignment="Center" Margin="648,33,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124" RenderTransformOrigin="0.467,0.078" Click="buttonInputMark_Click"/>
         <ListView Name="ListViewPoint"
                   Grid.Row="2"
                   HorizontalAlignment="Center">
@@ -30,7 +30,7 @@
                     <GridViewColumn Header="STT" Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding studentPointSubjectList.Count}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                <TextBlock Text="{Binding Stt}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
