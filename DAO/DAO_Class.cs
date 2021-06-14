@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DTO.Class;
 
 namespace DAO
 {
@@ -41,7 +42,7 @@ namespace DAO
             DBConnect _dbContext = new DBConnect();
             using (IDbConnection _dbConnection = _dbContext.CreateConnection())
             {
-                var output = _dbConnection.Query<Class>($"select * from CLASS").ToList();
+                var output = _dbConnection.Query<Class>($"select * from CLASS order by CLASS_NAME").ToList();
                 return output;
             }
         }
@@ -89,6 +90,84 @@ namespace DAO
                 var output = _dbConnection.Query<Class>($"select * from CLASS where CLASS_NAME like N'%{NameClass}%'").ToList();
                 return output;
             }
+        }
+        /// <summary>
+        /// Lấy ds báo cáo tổng kết theo môn học / học kỳ
+        /// </summary>
+        /// <param name="subjectId"></param>
+        /// <param name="semesisId"></param>
+        /// <param name="scorePass"></param>
+        /// <returns></returns>
+        public List<DTO_Subject_Report> listDataSubjectReport(int subjectId = 0, int semesisId = 0, float scorePass = 0)
+        {
+            try
+            {
+                DBConnect _dbContext = new DBConnect();
+                var parameters = new DynamicParameters();
+                using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+                {
+                    var queryString = $@"SELECT CLASS.CLASS_NAME AS Class_Name, 
+		                                    count(STUDENT.STUDENT_ID) AS SiSo,
+		                                    count(CASE WHEN POINT.[AVG] >= {scorePass} THEN POINT.[AVG] END) AS Pass
+                                    FROM CLASS INNER JOIN STUDENT ON CLASS.CLASS_ID = STUDENT.CLASS_ID
+	                                    LEFT JOIN POINT ON POINT.STUDENT_ID = STUDENT.STUDENT_ID
+                                    WHERE 1=1 ";
+                    if (subjectId != 0)
+                    {
+                        queryString += " AND POINT.SUBJECT_ID = @SUBJECT_ID ";
+                        parameters.Add("@SUBJECT_ID", subjectId);
+                    }
+                    if (semesisId != 0)
+                    {
+                        queryString += " AND POINT.SEMESTER = @SEMESTER ";
+                        parameters.Add("@SEMESTER", semesisId);
+                    }
+                    queryString += "GROUP BY CLASS.CLASS_ID,CLASS.CLASS_NAME";
+                    var output =  _dbConnection.Query<DTO_Subject_Report>(queryString, parameters);
+                    return output.ToList();
+                }
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+            
+        }
+        /// <summary>
+        /// Lấy danh sách báo cáo tổng kết học kỳ
+        /// </summary>
+        /// <param name="semesisId"></param>
+        /// <param name="scorePass"></param>
+        /// <returns></returns>
+        public List<DTO_Subject_Report> listDataSemesisReport(int semesisId = 0, float scorePass = 0)
+        {
+            try
+            {
+                DBConnect _dbContext = new DBConnect();
+                var parameters = new DynamicParameters();
+                using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+                {
+                    var queryString = $@"SELECT CLASS.CLASS_NAME AS Class_Name, 
+		                                    count(STUDENT.STUDENT_ID) AS SiSo,
+		                                    count(CASE WHEN POINT.[AVG] >= {scorePass} THEN POINT.[AVG] END) AS Pass
+                                    FROM CLASS INNER JOIN STUDENT ON CLASS.CLASS_ID = STUDENT.CLASS_ID
+	                                    LEFT JOIN POINT ON POINT.STUDENT_ID = STUDENT.STUDENT_ID
+                                    WHERE 1=1 ";
+                    if (semesisId != 0)
+                    {
+                        queryString += " AND POINT.SEMESTER = @SEMESTER ";
+                        parameters.Add("@SEMESTER", semesisId);
+                    }
+                    queryString += "GROUP BY CLASS.CLASS_ID,CLASS.CLASS_NAME";
+                    var output =  _dbConnection.Query<DTO_Subject_Report>(queryString, parameters);
+                    return output.ToList();
+                }
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+            
         }
     }
 }

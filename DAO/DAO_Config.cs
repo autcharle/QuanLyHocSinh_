@@ -20,5 +20,23 @@ namespace DAO
                 return output;
             }
         }
+        public Config GetConfig()
+        {
+            DBConnect _dbContext = new DBConnect();
+            var output = new Config();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                try
+                {
+                    output = _dbConnection.Query<Config>($"select * from CONFIG").FirstOrDefault();
+                    return output;
+                }
+                catch (Exception ex)
+                {
+                    var mess = ex.Message;
+                    return null;
+                }
+            }
+        }
     }
 }

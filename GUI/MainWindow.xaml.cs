@@ -81,6 +81,10 @@ namespace GUI
         {
             DataContext = new UserControlReadMark();
         }
+        private void ToUCSubjectReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new UserControlSubjectReport();
+        }
 
         private void ToUCConfigButton_Click(object sender, RoutedEventArgs e)
         {
