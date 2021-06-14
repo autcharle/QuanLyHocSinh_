@@ -13,5 +13,6 @@ namespace BUS
         DAO_Subject _daoSubject = new DAO_Subject();
         public int CountSubject() => _daoSubject.Count();
         public List<Subject> getAllSubject() => _daoSubject.GetAll();
+        public List<Subject> GetAllSubject() => _daoSubject.GetAll();
     }
 }

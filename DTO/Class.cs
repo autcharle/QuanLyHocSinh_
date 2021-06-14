@@ -13,7 +13,15 @@ namespace DTO
         {
             this.Students = new HashSet<Student>();
         }
+        public class DTO_Subject_Report
+        {
+            public int Stt { get; set; }
+            public string Class_Name { get; set; }
+            public int SiSo { get; set; }
+            public int Pass { get; set; }
+            public string Rate { get; set; }
 
+        }
         public int Class_ID { get; set; }
         public string Class_Name { get; set; }
 

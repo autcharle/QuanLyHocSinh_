@@ -20,6 +20,10 @@ namespace BUS
         {
             return (int)_daoConfig.GetAll()[0].Max_Age;
         }
+        public float GetScorePass()
+        {
+            return (float)_daoConfig.GetAll()[0].Subject_Point_Standards;
+        }
        
     }
 }

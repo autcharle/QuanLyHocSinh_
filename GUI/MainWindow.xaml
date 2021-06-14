@@ -151,7 +151,7 @@
             <!--#region Navigation-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1000"/>
+                    <ColumnDefinition Width="2000"/>
                     <!--Menu-->
                     <ColumnDefinition Width="*"/>
                     <!--Others-->
@@ -166,27 +166,27 @@
                         Content="HỌC SINH"
                         IsChecked="True"
                         Style="{StaticResource TopNavigationMenuStyle}"
-                        Click="ToUCStudentButton_Click"/>
+                        Click="ToUCStudentButton_Click" Width="128"/>
                     <RadioButton
                         x:Name="ToUCClassButton"
                         Content="LỚP HỌC"
                         Style="{StaticResource TopNavigationMenuStyle}"
-                        Click="ToUCClassButton_Click"/>
+                        Click="ToUCClassButton_Click" Width="115"/>
                     <RadioButton
                         x:Name="ToUCSubjectButton"
                         Content="MÔN HỌC"
                         Style="{StaticResource TopNavigationMenuStyle}"
-                        Click="ToUCSubjectButton_Click"/>
+                        Click="ToUCSubjectButton_Click" Width="132"/>
                     <RadioButton
-                        x:Name="ToUCMarkButton"
-                        Content="THÀNH TÍCH"
+                        x:Name="ToUCSubjectReportButton"
+                        Content="BÁO CÁO"
                         Style="{StaticResource TopNavigationMenuStyle}"
-                        Click="ToUCMarkButton_Click"/>
+                        Click="ToUCSubjectReportButton_Click" Width="234"/>
                     <RadioButton
                         x:Name="ToUCConfigButton"
                         Content="QUY ĐỊNH"
                         Style="{StaticResource TopNavigationMenuStyle}"
-                        Click="ToUCConfigButton_Click"/>
+                        Click="ToUCConfigButton_Click" Width="126"/>
                 </StackPanel>
                 <!--#endregion-->
             </Grid>
