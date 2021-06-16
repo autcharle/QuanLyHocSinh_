@@ -11,7 +11,7 @@
         <Label Content="Tuổi tối thiểu:" FontSize="20" HorizontalAlignment="Left" Height="52" Margin="10,93,0,0" VerticalAlignment="Top" Width="158"/>
         <Label Content="Tuổi tối đa:" FontSize="20" HorizontalAlignment="Left" Height="58" Margin="10,167,0,0" VerticalAlignment="Top" Width="153"/>
         <TextBox Name="MinAge" HorizontalAlignment="Left" Height="52" Margin="174,87,0,0" Text="{Binding Min_Age}" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" />
-        <TextBox Name="MaxAge" HorizontalAlignment="Left" Height="58" Margin="174,165,0,0" Text="{Binding Max_Age}" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+        <TextBox Name="MaxAge" HorizontalAlignment="Left" Height="58" Margin="174,144,0,0" Text="{Binding Max_Age}" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
 
         <Label Content="Số lớp tối đa:" FontSize="20" HorizontalAlignment="Left" Height="52" Margin="360,96,0,0" VerticalAlignment="Top" Width="132"/>
         <Label Content="Số môn tối đa:" FontSize="20"  HorizontalAlignment="Left" Height="58" Margin="360,173,0,0" VerticalAlignment="Top" Width="138"/>
