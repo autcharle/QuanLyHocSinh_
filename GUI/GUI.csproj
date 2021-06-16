@@ -89,6 +89,9 @@
     <Compile Include="UserControls\UserControlReadSubject.xaml.cs">
       <DependentUpon>UserControlReadSubject.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlSubjectReport.xaml.cs">
+      <DependentUpon>UserControlSubjectReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\UserControlCreateClassVM.cs" />
     <Compile Include="ViewModels\UserControlCreateStudentVM.cs" />
     <Compile Include="WindowInputMarkForStudent.xaml.cs">
@@ -133,6 +136,10 @@
     <Page Include="UserControls\UserControlReadSubject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UserControlSubjectReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="WindowInputMarkForStudent.xaml">
       <SubType>Designer</SubType>

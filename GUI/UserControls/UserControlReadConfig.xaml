@@ -5,8 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Loaded="UserControl_Loaded">
     <Grid>
-            
+        <Label Content="Tuổi tối thiểu" HorizontalAlignment="Left" Height="52" Margin="10,93,0,0" VerticalAlignment="Top" Width="83"/>
+        <Label Content="Tuổi tối đa" HorizontalAlignment="Left" Height="58" Margin="10,167,0,0" VerticalAlignment="Top" Width="83"/>
+        <TextBox Name="MinAge" HorizontalAlignment="Left" Height="52" Margin="149,93,0,0" Text="{Binding Min_Age}" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" />
+        <TextBox Name="MaxAge" HorizontalAlignment="Left" Height="58" Margin="149,167,0,0" Text="{Binding Max_Age}" TextWrapping="Wrap" VerticalAlignment="Top" Width="92"/>
+
+        <Label Content="Số lớp tối đa" HorizontalAlignment="Left" Height="52" Margin="259,95,0,0" VerticalAlignment="Top" Width="83"/>
+        <Label Content="Số môn tối đa" HorizontalAlignment="Left" Height="58" Margin="259,173,0,0" VerticalAlignment="Top" Width="83"/>
+        <TextBox Name="MaxClass" HorizontalAlignment="Left" Height="52" Margin="388,95,0,0" Text="{Binding Max_Class}" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" />
+        <TextBox Name="MaxSubject" HorizontalAlignment="Left" Height="58" Margin="388,173,0,0" Text="{Binding Max_Subject}" TextWrapping="Wrap" VerticalAlignment="Top" Width="92"/>
+
+        <Label Content="Sỉ số tối đa" HorizontalAlignment="Right" Height="46" Margin="0,95,185,0" VerticalAlignment="Top" Width="95"/>
+        <Label Content="Điểm đạt môn học" HorizontalAlignment="Right" Height="52" Margin="0,178,171,0" VerticalAlignment="Top" Width="109"/>
+        <TextBox Name="MaxStudentClass" HorizontalAlignment="Right" Height="52" Margin="0,89,31,0" Text="{Binding Max_Student_Class}" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" />
+        <TextBox Name="SubjectPointStandards" HorizontalAlignment="Right" Height="58" Margin="0,167,31,0" Text="{Binding Subject_Point_Standards}" TextWrapping="Wrap" VerticalAlignment="Top" Width="92"/>
+        <Label Content="Thay đổi cài đặt của hệ thống" HorizontalAlignment="Center" Height="47" Margin="0,10,0,0" VerticalAlignment="Top" Width="184"/>
+        <Button Content="Lưu thông tin" HorizontalAlignment="Left" Height="51" Margin="296,248,0,0" VerticalAlignment="Top" Width="174" Click="Button_Click"/>
+
     </Grid>
 </UserControl>
