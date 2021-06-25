@@ -23,9 +23,10 @@ namespace BUS
             if (DateTime.Now.Year - _student.Birthday.Year < _minAge || DateTime.Now.Year - _student.Birthday.Year > _maxAge) return false;
             if (_student.Address == "") return false;
             if (_student.Email == "") return false;
-            _daoStudent.InsertAStudent(_student);
-            return true;
+            return _daoStudent.InsertAStudent(_student);
         }
+
+        public bool DeleteStudentByID(int ID) => _daoStudent.DeleteStudentByID(ID);
 
         public List<Student> GetAllStudent() => _daoStudent.GetAll();
         public List<Student> GetStudentByID(int? IDClass) => _daoStudent.GetStudentByClassID(IDClass);

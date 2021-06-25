@@ -13,7 +13,7 @@ namespace DAO
 {
     public class DAO_Student : DBConnect
     {
-        public void InsertAStudent(Student _student)
+        public bool InsertAStudent(Student _student)
         {
             DBConnect _dbContext = new DBConnect();
             using (IDbConnection _dbConnection = _dbContext.CreateConnection())
@@ -26,6 +26,8 @@ namespace DAO
                     Address = _student.Address,
                     Email = _student.Email
                 }) ;
+                if (affectedRows == 0) return false;
+                else return true;
             }
         }
         public List<Student> GetAll()
@@ -65,6 +67,17 @@ namespace DAO
             {
                 var output = _dbConnection.Query<Student>($"select * from STUDENT where FULLNAME like N'%{NameStudent}%' and CLASS_ID = '{IDClass}'").ToList();
                 return output;
+            }
+        }
+
+        public bool DeleteStudentByID(int ID)
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                var affectedRows = _dbConnection.Execute($"delete from STUDENT where STUDENT_ID = '{ID}'");
+                if (affectedRows == 0) return false;
+                else return true;
             }
         }
     }

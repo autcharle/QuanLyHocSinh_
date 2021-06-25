@@ -26,6 +26,7 @@ namespace GUI.UserControls
         BUS_Student _busStudent = new BUS_Student();
         BUS_Class _busClass = new BUS_Class();
         List<Class> _classNames = new List<Class>();
+        BUS_Point _busPoint = new BUS_Point();
         public UserControlReadStudent()
         {
             InitializeComponent();
@@ -108,6 +109,56 @@ namespace GUI.UserControls
             else
             {
                 NullListMessageTextBlock.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void ListViewStudent_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DeleteRecordButton.Visibility == Visibility.Hidden)
+            {
+                DeleteRecordButton.Visibility = Visibility.Visible;
+            }
+            if (ReadRecordButton.Visibility == Visibility.Hidden)
+            {
+                ReadRecordButton.Visibility = Visibility.Visible;
+            }
+            if (ListViewStudent.SelectedItem == null)
+            {
+                if (DeleteRecordButton.Visibility == Visibility.Visible)
+                {
+                    DeleteRecordButton.Visibility = Visibility.Hidden;
+                }
+                if (ReadRecordButton.Visibility == Visibility.Visible)
+                {
+                    ReadRecordButton.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
+        private void DeleteRecordButton_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Bạn có chắc muốn xóa hồ sơ học sinh đã chọn?\nWarning: Mọi dữ liệu về điểm của học sinh này sẽ bị xóa chung", "Thông Báo",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                int selectedListViewIndex = ListViewStudent.SelectedIndex;
+                int selectedStudentID = _students[selectedListViewIndex].Student_ID;
+                if (_busStudent.DeleteStudentByID(selectedStudentID))
+                {
+                    _busPoint.DeletePointByStudentID(selectedStudentID);
+                    MessageBox.Show("Xóa thành công!", "Thông Báo",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    DisplayStudent();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa thất bại! Không có dữ liệu bị xóa", "Thông Báo",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                //Do nothing
             }
         }
     }

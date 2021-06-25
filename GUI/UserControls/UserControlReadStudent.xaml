@@ -12,8 +12,27 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="125"/>
             <RowDefinition Height="75"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
+        <StackPanel Grid.Row="3" Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button     Name="ReadRecordButton" Visibility="Hidden"
+                        Margin="0 5 0 0"
+                        Height="40"
+                        Width="200"
+                        Content="Xem Hồ Sơ"
+                        Foreground="AliceBlue">
+            </Button>
+            <Button     Name="DeleteRecordButton" Visibility="Hidden"
+                        Margin="10 5 0 0"
+                        Height="40"
+                        Width="200"
+                        Content="Xóa Hồ Sơ"
+                        Foreground="AliceBlue"
+                        Background="Red" Click="DeleteRecordButton_Click">
+            </Button>
+        </StackPanel>
         <TextBlock Grid.Row="1"
             Text="TRA CỨU HỌC SINH"
                    FontSize="35"
@@ -24,7 +43,9 @@
                    VerticalAlignment="Bottom"/>
         <ListView Name="ListViewStudent"
                   Grid.Row="2"
-                  HorizontalAlignment="Center">
+                  HorizontalAlignment="Center"
+                  SelectionChanged="ListViewStudent_SelectionChanged"
+                  >
             <ListView.View>
                 <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle}">
                     <GridViewColumn Header="STT" Width="50">
@@ -80,6 +101,7 @@
                              Height="60"
                              Margin="5 0"
                              Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             materialDesign:TextFieldAssist.HasClearButton="True"
                              materialDesign:HintAssist.Hint="Tìm kiếm..."
                              FontSize="16"
                              Name="SearchTextBox"

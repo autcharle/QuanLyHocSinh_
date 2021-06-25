@@ -44,11 +44,13 @@ namespace GUI.UserControls
             _student.Email = EmailTextBox.Text;
             if (_busStudent.InsertAStudent(_student))
             {
-                MessageBox.Show("Thêm thành công, thông tin học sinh đã được tiếp nhận!");
+                MessageBox.Show("Thêm thành công, thông tin học sinh đã được tiếp nhận!","Thông Báo",
+                    MessageBoxButton.OK,MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Thêm thất bại, vui lòng xem lại các trường dữ liệu!");
+                MessageBox.Show("Thêm thất bại, vui lòng xem lại các trường dữ liệu!","Thông Báo",
+                    MessageBoxButton.OK,MessageBoxImage.Error);
             }
         }
     }
