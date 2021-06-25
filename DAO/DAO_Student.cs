@@ -34,7 +34,7 @@ namespace DAO
         {
             DBConnect _dbContext = new DBConnect();
             using (IDbConnection _dbConnection = _dbContext.CreateConnection())
-            { 
+            {
                 var output = _dbConnection.Query<Student>($"select * from STUDENT").ToList();
                 return output;
             }

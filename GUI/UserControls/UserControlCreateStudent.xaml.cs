@@ -32,20 +32,29 @@ namespace GUI.UserControls
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            _student.FullName = FullNameTextBox.Text;
-            _student.Gender = GenderCombobox.Text;
-            _student.Birthday = (DateTime)BirthdayPicker.SelectedDate;
-            _student.Address = AddressTextBox.Text;
-            _student.Email = EmailTextBox.Text;
-            if (_busStudent.InsertAStudent(_student))
+            var result = MessageBox.Show("Xác nhận thông tin học sinh chính xác?", "Confirm",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if(result == MessageBoxResult.Yes)
             {
-                MessageBox.Show("Thêm thành công, thông tin học sinh đã được tiếp nhận!","Thông Báo",
-                    MessageBoxButton.OK,MessageBoxImage.Information);
+                _student.FullName = FullNameTextBox.Text;
+                _student.Gender = GenderCombobox.Text;
+                _student.Birthday = (DateTime)BirthdayPicker.SelectedDate;
+                _student.Address = AddressTextBox.Text;
+                _student.Email = EmailTextBox.Text;
+                if (_busStudent.InsertAStudent(_student))
+                {
+                    MessageBox.Show("Thêm thành công, thông tin học sinh đã được tiếp nhận!", "Thông Báo",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Thêm thất bại, vui lòng xem lại các trường dữ liệu!", "Thông Báo",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Thêm thất bại, vui lòng xem lại các trường dữ liệu!","Thông Báo",
-                    MessageBoxButton.OK,MessageBoxImage.Error);
+                //Do nothing
             }
         }
     }
