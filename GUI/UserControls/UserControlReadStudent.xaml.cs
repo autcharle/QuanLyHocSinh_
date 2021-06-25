@@ -161,5 +161,13 @@ namespace GUI.UserControls
                 //Do nothing
             }
         }
+
+        private void ReadRecordButton_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedListViewIndex = ListViewStudent.SelectedIndex;
+            Student selectedStudent = _students[selectedListViewIndex];
+            TabPanel.Children.Clear();
+            TabPanel.Children.Add(new UserControlReadStudentDetails(selectedStudent));
+        }
     }
 }

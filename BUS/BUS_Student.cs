@@ -37,11 +37,6 @@ namespace BUS
         /// Tra cứu học sinh
         /// </summary>
         /// <returns>Danh sách học sinh theo BM3</returns>
-        //Lấy tên lớp của học sinh
-        //Lấy điểm các môn
-        //Tính điểm trung bình mỗi môn
-        //Tính điểm trung bình học kỳ
-        //Gán vào thuộc tính của Student
         public List<Student> ReadAllStudent()
         {
             var output = GetAllStudent();

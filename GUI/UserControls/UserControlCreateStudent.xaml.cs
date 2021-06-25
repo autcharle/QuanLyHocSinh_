@@ -30,11 +30,6 @@ namespace GUI.UserControls
             InitializeComponent();
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             _student.FullName = FullNameTextBox.Text;
