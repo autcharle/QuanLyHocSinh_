@@ -113,10 +113,10 @@ namespace GUI.UserControls
             _classes = _busClass.GetAllClass();
             var item = (sender as FrameworkElement).DataContext;
             int index = ListViewClass.Items.IndexOf(item);
+            DisplayClass();
             ListViewClass.SelectedIndex = index;
-            //string id_class = ListViewClass.S
-           
-            //ListViewStudentList.ItemsSource = output; 
+            var output = _busStudent.ReadStudentByClassID(_classes[index].Class_ID);
+            ListViewStudentList.ItemsSource = output;
         }
     }
 }
