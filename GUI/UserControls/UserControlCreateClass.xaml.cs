@@ -39,7 +39,7 @@ namespace GUI.UserControls
             string class_group = ClassGroupCombobox.Text;
             _class.Class_Group = int.Parse(class_group.ToString());
 
-
+            // tesst
             if (_busClass.InsertAClass(_class))
             {
                 MessageBox.Show("Thêm lớp học thành công");
