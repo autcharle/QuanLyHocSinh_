@@ -13,7 +13,7 @@ namespace GUI.Extensions.ValidationRules
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            var _fullNameRegex = @"^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]*(\s[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]*)+$";
+            var _fullNameRegex = @"^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]+(?:\s[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]+)+$";
             return !Regex.IsMatch((value ?? "").ToString(), _fullNameRegex, RegexOptions.IgnoreCase)
                 ? new ValidationResult(false, "Ít nhất hai từ, chỉ bao gồm chữ cái")
                 : ValidationResult.ValidResult;
