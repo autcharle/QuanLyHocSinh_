@@ -106,7 +106,7 @@ namespace DAO
                 var parameters = new DynamicParameters();
                 using (IDbConnection _dbConnection = _dbContext.CreateConnection())
                 {
-                    var queryString = $@"SELECT CLASS.CLASS_NAME AS Class_Name, 
+                    var queryString = $@"SELECT CLASS.CLASS_NAME AS Class_Name,
 		                                    count(STUDENT.STUDENT_ID) AS SiSo,
 		                                    count(CASE WHEN POINT.[AVG] >= {scorePass} THEN POINT.[AVG] END) AS Pass
                                     FROM CLASS INNER JOIN STUDENT ON CLASS.CLASS_ID = STUDENT.CLASS_ID
@@ -131,7 +131,7 @@ namespace DAO
             {
                 return null;
             }
-            
+
         }
         /// <summary>
         /// Lấy danh sách báo cáo tổng kết học kỳ
@@ -147,7 +147,7 @@ namespace DAO
                 var parameters = new DynamicParameters();
                 using (IDbConnection _dbConnection = _dbContext.CreateConnection())
                 {
-                    var queryString = $@"SELECT CLASS.CLASS_NAME AS Class_Name, 
+                    var queryString = $@"SELECT CLASS.CLASS_NAME AS Class_Name,
 		                                    count(STUDENT.STUDENT_ID) AS SiSo,
 		                                    count(CASE WHEN POINT.[AVG] >= {scorePass} THEN POINT.[AVG] END) AS Pass
                                     FROM CLASS INNER JOIN STUDENT ON CLASS.CLASS_ID = STUDENT.CLASS_ID
@@ -167,7 +167,7 @@ namespace DAO
             {
                 return null;
             }
-            
+
         }
     }
 }

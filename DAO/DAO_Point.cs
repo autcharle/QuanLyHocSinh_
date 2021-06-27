@@ -21,6 +21,17 @@ namespace DAO
             }
         }
 
+        public bool DeletePointByStudentID(int ID)
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                var affectedRows = _dbConnection.Execute($"delete from POINT where STUDENT_ID = '{ID}'");
+                if (affectedRows == 0) return false;
+                else return true;
+            }
+        }
+
         public void InsertPointForStudent(Point _point)
         {
             DBConnect _dbContext = new DBConnect();

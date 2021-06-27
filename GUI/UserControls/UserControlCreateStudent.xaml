@@ -7,12 +7,11 @@
              xmlns:local="clr-namespace:GUI.UserControls"
              xmlns:validrules="clr-namespace:GUI.Extensions.ValidationRules"
              xmlns:viewmodels="clr-namespace:GUI.ViewModels"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             Loaded="UserControl_Loaded">
-
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
-        <viewmodels:UserControlCreateClassVM></viewmodels:UserControlCreateClassVM>
+        <viewmodels:UserControlCreateStudentVM>
+        </viewmodels:UserControlCreateStudentVM>
     </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -44,7 +43,7 @@
                         Path="FullName"
                         UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <validrules:NotEmptyValidationRule
+                            <validrules:FullNameValidationRule
                                 ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
@@ -110,7 +109,7 @@
                        FontSize="16"></TextBlock>
             <TextBox Margin="150 0"
                      Name="EmailTextBox"
-                     materialDesign:HintAssist.HelperText="*student@mail.com"
+                     materialDesign:HintAssist.HelperText="*Không phân biệt hoa thường"
                      materialDesign:TextFieldAssist.HasClearButton="True"
                      Style="{StaticResource MaterialDesignTextBox}">
                 <TextBox.Text>
@@ -118,7 +117,7 @@
                         Path="Email"
                         UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <validrules:NotEmptyValidationRule
+                            <validrules:IsEmailValidationRule
                                 ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>

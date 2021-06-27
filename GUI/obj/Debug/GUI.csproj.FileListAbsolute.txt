@@ -43,3 +43,17 @@ F:\Documents\MonHoc\Nam3\Ki2\NMCNPM\DoAn\QuanLyHocSinh_\GUI\obj\Debug\GUI.csproj
 F:\Documents\MonHoc\Nam3\Ki2\NMCNPM\DoAn\QuanLyHocSinh_\GUI\obj\Debug\GUI.csproj.CopyComplete
 F:\Documents\MonHoc\Nam3\Ki2\NMCNPM\DoAn\QuanLyHocSinh_\GUI\obj\Debug\GUI.exe
 F:\Documents\MonHoc\Nam3\Ki2\NMCNPM\DoAn\QuanLyHocSinh_\GUI\obj\Debug\GUI.pdb
+C:\Users\nhandt\Documents\GitHub\QuanLyHocSinh_\GUI\obj\Debug\MainWindow.g.cs
+C:\Users\nhandt\Documents\GitHub\QuanLyHocSinh_\GUI\obj\Debug\UserControls\UserControlCreateClass.g.cs
+C:\Users\nhandt\Documents\GitHub\QuanLyHocSinh_\GUI\obj\Debug\UserControls\UserControlCreateStudent.g.cs
+C:\Users\nhandt\Documents\GitHub\QuanLyHocSinh_\GUI\obj\Debug\UserControls\UserControlReadClass.g.cs
+C:\Users\nhandt\Documents\GitHub\QuanLyHocSinh_\GUI\obj\Debug\UserControls\UserControlReadConfig.g.cs
+C:\Users\nhandt\Documents\GitHub\QuanLyHocSinh_\GUI\obj\Debug\UserControls\UserControlReadMark.g.cs
+C:\Users\nhandt\Documents\GitHub\QuanLyHocSinh_\GUI\obj\Debug\UserControls\UserControlReadStudent.g.cs
+C:\Users\nhandt\Documents\GitHub\QuanLyHocSinh_\GUI\obj\Debug\UserControls\UserControlReadSubject.g.cs
+C:\Users\nhandt\Documents\GitHub\QuanLyHocSinh_\GUI\obj\Debug\UserControls\UserControlSubjectReport.g.cs
+C:\Users\nhandt\Documents\GitHub\QuanLyHocSinh_\GUI\obj\Debug\WindowInputMarkForStudent.g.cs
+C:\Users\nhandt\Documents\GitHub\QuanLyHocSinh_\GUI\obj\Debug\App.g.cs
+C:\Users\nhandt\Documents\GitHub\QuanLyHocSinh_\GUI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\nhandt\Documents\GitHub\QuanLyHocSinh_\GUI\obj\Debug\GUI_MarkupCompile.cache
+C:\Users\nhandt\Documents\GitHub\QuanLyHocSinh_\GUI\obj\Debug\GUI_MarkupCompile.lref
