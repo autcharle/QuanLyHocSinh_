@@ -66,6 +66,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extensions\ValidationRules\FullNameValidationRule.cs" />
+    <Compile Include="Extensions\ValidationRules\IsEmailValidationRule.cs" />
     <Compile Include="Extensions\ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="Extensions\ValidationRules\RequiredAgeValidationRule.cs" />
     <Compile Include="UserControls\UserControlCreateClass.xaml.cs">

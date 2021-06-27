@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BUS
@@ -17,12 +18,14 @@ namespace BUS
         BUS_Config _busConfig = new BUS_Config();
         public bool InsertAStudent(Student _student)
         {
+            var _fullNameRegex = @"^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]*(\s[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]*)+$";
+            var _isEmailRegex = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
             int _maxAge = _busConfig.GetMaxAge();
             int _minAge = _busConfig.GetMinAge();
-            if (_student.FullName == "") return false;
+            if (!Regex.IsMatch(_student.FullName,_fullNameRegex,RegexOptions.IgnoreCase)) return false;
             if (DateTime.Now.Year - _student.Birthday.Year < _minAge || DateTime.Now.Year - _student.Birthday.Year > _maxAge) return false;
             if (_student.Address == "") return false;
-            if (_student.Email == "") return false;
+            if (!Regex.IsMatch(_student.Email,_isEmailRegex,RegexOptions.IgnoreCase)) return false;
             return _daoStudent.InsertAStudent(_student);
         }
 

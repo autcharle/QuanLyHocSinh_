@@ -43,7 +43,7 @@
                         Path="FullName"
                         UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <validrules:NotEmptyValidationRule
+                            <validrules:FullNameValidationRule
                                 ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
@@ -109,7 +109,7 @@
                        FontSize="16"></TextBlock>
             <TextBox Margin="150 0"
                      Name="EmailTextBox"
-                     materialDesign:HintAssist.HelperText="*student@mail.com"
+                     materialDesign:HintAssist.HelperText="*Không phân biệt hoa thường"
                      materialDesign:TextFieldAssist.HasClearButton="True"
                      Style="{StaticResource MaterialDesignTextBox}">
                 <TextBox.Text>
@@ -117,7 +117,7 @@
                         Path="Email"
                         UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <validrules:NotEmptyValidationRule
+                            <validrules:IsEmailValidationRule
                                 ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
