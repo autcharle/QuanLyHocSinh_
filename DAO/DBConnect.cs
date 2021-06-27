@@ -26,9 +26,9 @@ namespace DAO
                 conn.Open();
                 conn.Close();
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
-                MessageBox.Show("Không thể kết nối tới Database, vui lòng thử lại!","Timed Out",
+                MessageBox.Show(ex.Message,"Timed Out",
                     MessageBoxButton.OK,MessageBoxImage.Error);
                 return new SqlConnection();
             }
