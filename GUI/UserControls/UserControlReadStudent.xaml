@@ -8,13 +8,33 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Loaded="UserControl_Loaded">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="125"/>
-            <RowDefinition Height="75"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="1"
+    <Grid x:Name="TabPanel">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="125"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="3" Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+                <Button     Name="ReadRecordButton" Visibility="Hidden"
+                        Margin="0 5 0 0"
+                        Height="40"
+                        Width="200"
+                        Content="Xem Hồ Sơ"
+                        Foreground="AliceBlue" Click="ReadRecordButton_Click">
+                </Button>
+                <Button     Name="DeleteRecordButton" Visibility="Hidden"
+                        Margin="10 5 0 0"
+                        Height="40"
+                        Width="200"
+                        Content="Xóa Hồ Sơ"
+                        Foreground="AliceBlue"
+                        Background="Red" Click="DeleteRecordButton_Click">
+                </Button>
+            </StackPanel>
+            <TextBlock Grid.Row="1"
             Text="TRA CỨU HỌC SINH"
                    FontSize="35"
                    FontWeight="DemiBold"
@@ -22,69 +42,72 @@
                    Margin="10"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Bottom"/>
-        <ListView Name="ListViewStudent"
+            <ListView Name="ListViewStudent"
                   Grid.Row="2"
-                  HorizontalAlignment="Center">
-            <ListView.View>
-                <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle}">
-                    <GridViewColumn Header="STT" Width="50">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Student_ID}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    
-                    <GridViewColumn Header="HỌ VÀ TÊN" Width="270">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding FullName}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                  HorizontalAlignment="Center"
+                  SelectionChanged="ListViewStudent_SelectionChanged"
+                  >
+                <ListView.View>
+                    <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle}">
+                        <GridViewColumn Header="STT" Width="50">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Student_ID}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
 
-                    <GridViewColumn Header="LỚP" Width="135">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding NameClass}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                        <GridViewColumn Header="HỌ VÀ TÊN" Width="270">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding FullName}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
 
-                    <GridViewColumn Header="TB HỌC KỲ 1" Width="150">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Score1stSem}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                        <GridViewColumn Header="LỚP" Width="135">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding NameClass}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
 
-                    <GridViewColumn Header="TB HỌC KỲ 2" Width="150">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Class_ID}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <DockPanel Grid.Row="0"
+                        <GridViewColumn Header="TB HỌC KỲ 1" Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Score1stSem}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="TB HỌC KỲ 2" Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Score2ndSem}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <DockPanel Grid.Row="0"
                     HorizontalAlignment="Center"
                     Width="800">
-            <StackPanel
+                <StackPanel
                         DockPanel.Dock="Right"
                         VerticalAlignment="Bottom"
                         >
-                <TextBox Width="350"
+                    <TextBox Width="350"
                              Height="60"
                              Margin="5 0"
                              Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             materialDesign:TextFieldAssist.HasClearButton="True"
                              materialDesign:HintAssist.Hint="Tìm kiếm..."
                              FontSize="16"
                              Name="SearchTextBox"
                              KeyDown="SearchTextBox_KeyDown"/>
-                <TextBlock
+                    <TextBlock
                     x:Name="NullListMessageTextBlock"
                    HorizontalAlignment="Right"
                    Text="Không có dữ liệu phù hợp với tìm kiếm"
@@ -93,44 +116,46 @@
                    FontSize="14"
                    FontStyle="Italic"
                    Visibility="Hidden"/>
-            </StackPanel>
-            <StackPanel DockPanel.Dock="Right"
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Right"
                         VerticalAlignment="Top">
-                <!--<Button Margin="0 20 0 0"
+                    <!--<Button Margin="0 20 0 0"
                         Height="40"
                         Width="200"
                         Content="TRA CỨU HỌC SINH"
                         Foreground="AliceBlue"></Button>-->
-                
-            </StackPanel>
-            <StackPanel DockPanel.Dock="Bottom"
+
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Bottom"
                     Orientation="Horizontal"
                         Margin="20 10">
-                <ComboBox Grid.Row="2" Height="40"
+                    <ComboBox Grid.Row="2" Height="40"
                                Width="160"
                             VerticalAlignment="Bottom"
                                VerticalContentAlignment="Center"
                                materialDesign:HintAssist.Hint="Tất cả"
                                FontSize="15"
                                Name="ClassComboBox"
-                               SelectionChanged="ClassComboBox_SelectionChanged"                         
+                               SelectionChanged="ClassComboBox_SelectionChanged"
                           Background="White">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Class_Name}"></TextBlock>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-                <materialDesign:PackIcon VerticalAlignment="Bottom"
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Class_Name}"></TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <materialDesign:PackIcon VerticalAlignment="Bottom"
                                  Height="35"
                                  Width="35"
-                                 Margin="5 2"
+                                         Margin="5 2"
                                  Kind="CloseCircleOutline"
                                  Foreground="Gray"
                                  Name="ClearFilterButton"
                                  MouseDown="ClearFilterButton_MouseDown"
                                  Visibility="Collapsed"/>
-            </StackPanel>
-        </DockPanel>
+                </StackPanel>
+
+            </DockPanel>
+        </Grid>
     </Grid>
 </UserControl>

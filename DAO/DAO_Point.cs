@@ -20,5 +20,34 @@ namespace DAO
                 return output;
             }
         }
+
+        public bool DeletePointByStudentID(int ID)
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                var affectedRows = _dbConnection.Execute($"delete from POINT where STUDENT_ID = '{ID}'");
+                if (affectedRows == 0) return false;
+                else return true;
+            }
+        }
+
+        public void InsertPointForStudent(Point _point)
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                var affectedRows = _dbConnection.Execute($"insert into POINT (STUDENT_ID,SUBJECT_ID,POINT_15,POINT_45,POINT_CK,AVG,SEMESTER) values (@Student_ID,@Subject_ID,@Point_15,@Point_45,@Point_CK,@AVG,@Semester)", new
+                {
+                    Student_ID = _point.Student_ID,
+                    Subject_ID = _point.Subject_ID,
+                    Point_15 = _point.Point_15,
+                    Point_45 = _point.Point_45,
+                    Point_CK = _point.Point_CK,
+                    AVG = 0,
+                    Semester = _point.Semester,
+                });
+            }
+        }
     }
 }

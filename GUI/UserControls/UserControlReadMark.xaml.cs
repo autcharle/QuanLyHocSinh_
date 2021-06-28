@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BUS;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,11 @@ namespace GUI.UserControls
     /// </summary>
     public partial class UserControlReadMark : UserControl
     {
+
         public UserControlReadMark()
         {
             InitializeComponent();
         }
+
     }
 }

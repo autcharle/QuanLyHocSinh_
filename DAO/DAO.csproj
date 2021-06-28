@@ -34,6 +34,7 @@
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.90\lib\net461\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -48,6 +49,7 @@
     <Compile Include="DAO_Class.cs" />
     <Compile Include="DAO_Config.cs" />
     <Compile Include="DAO_Point.cs" />
+    <Compile Include="DAO_StudentPointSubject.cs" />
     <Compile Include="DAO_Student.cs" />
     <Compile Include="DAO_Subject.cs" />
     <Compile Include="DBConnect.cs" />

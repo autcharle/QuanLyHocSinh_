@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DTO.Class;
 
 namespace BUS
 {
@@ -19,7 +20,7 @@ namespace BUS
             if (_class.Class_Name == "" || _class.Class_Name==" ") return false;
                 _daoClass.InsertAClass(_class);
                 return true;
-}
+        }
         public List<Class> ReadClassByClassGroup(int class_group)
         {
             var output= _daoClass.ReadClassByClassGroup(class_group);
@@ -74,9 +75,56 @@ namespace BUS
                 }
                 _class.NumberMember = count;
             }
-           
+            
         }
-        
+        /// <summary>
+        /// Xử lý lý dữ liệu trả về của báo cáo tổng kết theo môn học
+        /// </summary>
+        /// <param name="subjectId"></param>
+        /// <param name="semesisId"></param>
+        /// <returns></returns>
+        public List<DTO_Subject_Report> listDataSubjectReport(int subjectId, int semesisId)
+        {
+            var getScorePass = _busConfig.GetScorePass();
+            var lstSubjectReport = _daoClass.listDataSubjectReport(subjectId, semesisId, getScorePass);
+            var lstGridView = new List<DTO_Subject_Report>();
+            int i = 1;
+            foreach (var item in lstSubjectReport)
+            {
+                var temp = new DTO_Subject_Report();
+                temp.Stt = i++;
+                temp.Class_Name = item.Class_Name;
+                temp.SiSo = item.SiSo;
+                temp.Pass = item.Pass;
+                var tempRate = ((float)item.Pass / item.SiSo) * 100;
+                temp.Rate = Math.Round(tempRate, 2) + " %";
+                lstGridView.Add(temp);
+            }
+            return lstGridView;
+        }
+        /// <summary>
+        /// Xử lý dữ liệu danh sách báo cáo theo học kỳ
+        /// </summary>
+        /// <param name="semesisId"></param>
+        /// <returns></returns>
+        public List<DTO_Subject_Report> listDataSemesisReport(int semesisId)
+        {
+            var getScorePass = _busConfig.GetScorePass();
+            var lstSubjectReport = _daoClass.listDataSemesisReport(semesisId, getScorePass);
+            var lstGridView = new List<DTO_Subject_Report>();
+            int i = 1;
+            foreach (var item in lstSubjectReport)
+            {
+                var temp = new DTO_Subject_Report();
+                temp.Stt = i++;
+                temp.Class_Name = item.Class_Name;
+                temp.SiSo = item.SiSo;
+                temp.Pass = item.Pass;
+                var tempRate = ((float)item.Pass / item.SiSo) * 100;
+                temp.Rate = Math.Round(tempRate, 2) + " %";
+                lstGridView.Add(temp);
+            }
+            return lstGridView;
+        }
     }
-
 }
