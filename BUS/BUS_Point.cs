@@ -48,6 +48,23 @@ namespace BUS
             if (_point.Point_45 > 10 || _point.Point_45 < 0) return false;
             if (_point.Point_CK > 10 || _point.Point_CK < 0) return false;
             _daoMark.InsertPointForStudent(_point);
+<<<<<<< Updated upstream
+=======
+            return true;
+        }
+
+        public List<Point> getAll()
+        {
+            return _daoMark.getAll();
+        }
+
+        public bool updatePointForStudent(Point _point)
+        {
+            if (_point.Point_15 > 10 || _point.Point_15 < 0) return false;
+            if (_point.Point_45 > 10 || _point.Point_45 < 0) return false;
+            if (_point.Point_CK > 10 || _point.Point_CK < 0) return false;
+            _daoMark.updatePointForStudent(_point);
+>>>>>>> Stashed changes
             return true;
         }
     }

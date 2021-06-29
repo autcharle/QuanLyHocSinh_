@@ -129,20 +129,27 @@ namespace GUI.UserControls
 
 		private void buttonInputMark_Click(object sender, RoutedEventArgs e)
 		{
-			int selectClass = comboBoxClass.SelectedIndex;
-			int selectSubject = comboBoxSubject.SelectedIndex;
-			int selectSemester = comboBoxSemester.SelectedIndex;
+			if(ListViewPoint.SelectedIndex == -1)
+			{
+				MessageBox.Show("Vui Lòng Chọn Học Sinh Để Nhập Điểm!", "Notice");
+			}
+			else
+			{
+				int selectClass = comboBoxClass.SelectedIndex;
+				int selectSubject = comboBoxSubject.SelectedIndex;
+				int selectSemester = comboBoxSemester.SelectedIndex;
 
-			int semester = 0;
-			if (selectSemester == 0)
-				semester = 1;
-			else if (selectSemester == 1)
-				semester = 2;
+				int semester = 0;
+				if (selectSemester == 0)
+					semester = 1;
+				else if (selectSemester == 1)
+					semester = 2;
 
-			int idSu = getIdSubject(subjectList[selectSubject].Subject_Name);
-			int idStudent = getIdStudent(studentPointSubjectList[ListViewPoint.SelectedIndex].FullName);
-			WindowInputMarkForStudent windowInputMarkForStudent = new WindowInputMarkForStudent(idStudent,semester,idSu);
-			windowInputMarkForStudent.Show();
+				int idSu = getIdSubject(subjectList[selectSubject].Subject_Name);
+				int idStudent = getIdStudent(studentPointSubjectList[ListViewPoint.SelectedIndex].FullName);
+				WindowInputMarkForStudent windowInputMarkForStudent = new WindowInputMarkForStudent(idStudent, semester, idSu);
+				windowInputMarkForStudent.Show();
+			}
 		}
 
 	}
