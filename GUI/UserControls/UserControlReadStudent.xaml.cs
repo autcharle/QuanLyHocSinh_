@@ -173,11 +173,10 @@ namespace GUI.UserControls
         public Student getSelectedStudent()
         {
 
-            if (ListViewStudent.SelectedIndex != 1)
+            if (ListViewStudent.SelectedIndex !=- 1)
             {
                 return _students[ListViewStudent.SelectedIndex];
-            }
-            else return null;
+            } else return null;
         }
     }
 }
