@@ -11,6 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
+           
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0"
             Text="HỒ SƠ HỌC SINH"
@@ -78,6 +79,8 @@
                      Style="{StaticResource MaterialDesignTextBox}"
                      Text="{Binding Email}">
             </TextBox>
+            
         </StackPanel>
     </Grid>
+    
 </UserControl>

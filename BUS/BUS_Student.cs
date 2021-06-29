@@ -104,5 +104,10 @@ namespace BUS
             }
             return output;
         }
+        //update class id for student
+        public void UpdateClassForStudent(int IDStudent, int IDClass)
+        {
+            _daoStudent.UpdateClassForStudent(IDStudent, IDClass);
+        }
     }
 }

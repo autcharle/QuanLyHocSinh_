@@ -66,6 +66,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="WindowAddStudentsToClass.xaml.cs">
+      <DependentUpon>WindowAddStudentsToClass.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowChangeClassForStudent.xaml.cs">
+      <DependentUpon>WindowChangeClassForStudent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\ValidationRules\FullNameValidationRule.cs" />
+    <Compile Include="Extensions\ValidationRules\IsEmailValidationRule.cs" />
     <Compile Include="Extensions\ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="Extensions\ValidationRules\RequiredAgeValidationRule.cs" />
     <Compile Include="UserControls\UserControlCreateClass.xaml.cs">
@@ -86,6 +94,9 @@
     <Compile Include="UserControls\UserControlReadStudent.xaml.cs">
       <DependentUpon>UserControlReadStudent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlReadStudentDetails.xaml.cs">
+      <DependentUpon>UserControlReadStudentDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlReadSubject.xaml.cs">
       <DependentUpon>UserControlReadSubject.xaml</DependentUpon>
     </Compile>
@@ -97,6 +108,14 @@
     <Compile Include="WindowInputMarkForStudent.xaml.cs">
       <DependentUpon>WindowInputMarkForStudent.xaml</DependentUpon>
     </Compile>
+    <Page Include="WindowAddStudentsToClass.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowChangeClassForStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -132,6 +151,10 @@
     <Page Include="UserControls\UserControlReadStudent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UserControlReadStudentDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\UserControlReadSubject.xaml">
       <SubType>Designer</SubType>

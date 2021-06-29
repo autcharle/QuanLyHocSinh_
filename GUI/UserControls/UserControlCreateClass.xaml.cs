@@ -24,6 +24,7 @@ namespace GUI.UserControls
     {
         List<Student> _students = new List<Student>();
         BUS_Class _busClass = new BUS_Class();
+        BUS_Config _busConfig = new BUS_Config();
         Class _class = new Class();
         public UserControlCreateClass()
         {
@@ -33,22 +34,41 @@ namespace GUI.UserControls
         {
 
         }
+        private bool ValidateInformation(string className, string classGroup)
+        {
+            if (className.IndexOf(classGroup) == -1)
+            {
+                MessageBox.Show("Lỗi! Tên lớp phải thuộc khối phù hợp");
+                return false;
+            }
+            else if (_busConfig.GetMaxClass() <= _busClass.getNumberClass())
+            {
+                MessageBox.Show("Lỗi! Số lớp đã đầy.");
+                return false;
+            }
+            else if (_busClass.checkExistClass(className) == true)
+            {
+                MessageBox.Show("Lỗi! Lớp đã tồn tại.");
+                return false;
+            }
+                return true;
+        }
         private void SaveButton_Click_1(object sender, RoutedEventArgs e)
         {
-            _class.Class_Name = ClassNameTextBox.Text;
+            _class.Class_Name = ClassNameTextBox.Text.ToUpper();
             string class_group = ClassGroupCombobox.Text;
-            _class.Class_Group = int.Parse(class_group.ToString());
-
-
-            if (_busClass.InsertAClass(_class))
-            {
-                MessageBox.Show("Thêm lớp học thành công");
-            }
-            else
-            {
-                MessageBox.Show("Thêm thất bại, vui lòng xem lại các trường dữ liệu!");
-            }
-        }
+            
+            if (ValidateInformation(_class.Class_Name, class_group)){
+                _class.Class_Group = int.Parse(class_group.ToString());
+                if (_busClass.InsertAClass(_class))
+                {
+                    MessageBox.Show("Thêm lớp học thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Thêm thất bại, vui lòng xem lại các trường dữ liệu!");
+                }
+            } }
     }
 }
 

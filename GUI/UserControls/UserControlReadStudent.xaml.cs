@@ -169,5 +169,15 @@ namespace GUI.UserControls
             TabPanel.Children.Clear();
             TabPanel.Children.Add(new UserControlReadStudentDetails(selectedStudent));
         }
+        //getSelectedStudent
+        public Student getSelectedStudent()
+        {
+
+            if (ListViewStudent.SelectedIndex != 1)
+            {
+                return _students[ListViewStudent.SelectedIndex];
+            }
+            else return null;
+        }
     }
 }

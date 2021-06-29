@@ -90,5 +90,17 @@ namespace DAO
                 return output;
             }
         }
+
+        //update class id for student
+        ///
+        public void UpdateClassForStudent(int IDStudent, int IDClass)
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                 _dbConnection.Query<Student>($" UPDATE STUDENT SET CLASS_ID ='{IDClass}' where STUDENT_ID = '{IDStudent}'");
+                
+            }
+        }
     }
 }

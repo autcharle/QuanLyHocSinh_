@@ -77,6 +77,30 @@ namespace BUS
             }
             
         }
+        public int getNumberClass()
+        {
+            int count = 0;
+            var output = GetAllClass();
+            foreach (var _class in output)
+            {
+                
+                    count++;
+                
+               
+            }
+            return count;
+
+        }
+        public bool checkExistClass(string className)
+        {
+            if (ReadClassByName(className).Count == 1) return true;
+            else return false;
+        }
+        //Xóa lớp 
+        public void DeleteClass(int idClass)
+        {
+            _daoClass.DeleteClass(idClass);
+        }
         /// <summary>
         /// Xử lý lý dữ liệu trả về của báo cáo tổng kết theo môn học
         /// </summary>

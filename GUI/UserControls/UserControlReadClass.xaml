@@ -31,59 +31,47 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="450"></ColumnDefinition>
                 <ColumnDefinition Width="800"></ColumnDefinition>
+                <!--<ColumnDefinition Width="483.013"/>-->
             </Grid.ColumnDefinitions>
-            <ListView  Name="ListViewClass" HorizontalAlignment="Left" Width="400" Margin="28,0,0,0"  >
+            <ListView  Name="ListViewClass" HorizontalAlignment="Left" Width="400" Margin="28,0,0,0" SelectionChanged="ListViewClass_SelectionChanged"  >
                 <ListView.View>
                     <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle}">
-                        <GridViewColumn Header="STT" >
+                        <GridViewColumn Header="ID" Width="80" >
                             <GridViewColumn.CellTemplate   >
                                 <DataTemplate>
-                                    <TextBlock  Text="{Binding Class_ID}" VerticalAlignment="Center" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                    <TextBlock Width="55"   Text="{Binding Class_ID}" VerticalAlignment="Stretch" Style="{StaticResource ListViewDataTextBlockStyle}" HorizontalAlignment="Stretch" TextAlignment="Center"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn Header="LỚP" Width="100">
+                        <GridViewColumn Header="LỚP" Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate >
-                                    <TextBlock  Width="80" Text="{Binding Class_Name}" TextWrapping="Wrap"  Style="{StaticResource ListViewDataTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Stretch" />
+                                    <TextBlock    Width="125" Text="{Binding Class_Name}" TextWrapping="Wrap"  Style="{StaticResource ListViewDataTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Stretch" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn  Header="SĨ SỐ" Width="80" >
+                        <GridViewColumn  Header="SĨ SỐ" Width="140" >
                             <GridViewColumn.CellTemplate >
                                 <DataTemplate>
-                                    <TextBlock Width="50" Text="{Binding NumberMember}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                    <TextBlock  TextAlignment="Center" Width="95" Text="{Binding NumberMember}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
 
-                        </GridViewColumn>
-                        <GridViewColumn Header="TÙY CHỌN " Width="120">
-                            <GridViewColumn.CellTemplate >
-                                <DataTemplate >
-                                    <Grid >
-                                        <Button x:Name="btnXemDS" Content="DSHS" Background="#FF8295C7" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnXemDS_Click" />
-                                    </Grid>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
-            <ListView  Grid.Column="1"  Name="ListViewStudentList" HorizontalAlignment="Left" Width="800" >
+            <ListView  Grid.Column="1"  Name="ListViewStudentList" HorizontalAlignment="Left" Width="800" Grid.ColumnSpan="2" >
                 <ListView.View>
                     <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle}">
-                        <GridViewColumn Header="STT" >
+                        <GridViewColumn Header="ID" Width="80" >
                             <GridViewColumn.CellTemplate   >
                                 <DataTemplate>
-                                    <TextBlock  Text="{Binding Student_ID}"  VerticalAlignment="Center" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                    <TextBlock  TextAlignment="Center" Width="55" Text="{Binding Student_ID}"  VerticalAlignment="Center" Style="{StaticResource ListViewDataTextBlockStyle}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        
-            <!--Text="{Binding Class_ID}"-->
-            
-
                         <GridViewColumn Header="HỌ TÊN" Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate >
@@ -94,42 +82,33 @@
                         <GridViewColumn  Header="GIỚI TÍNH" Width="100" >
                             <GridViewColumn.CellTemplate >
                                 <DataTemplate>
-                                    <TextBlock Width="100" Text="{Binding Gender}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                    <TextBlock  TextAlignment="Center" Width="100" Text="{Binding Gender}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
 
                         </GridViewColumn>
-                        <GridViewColumn Header="NĂM SINH" Width="120">
+                        <GridViewColumn Header="NĂM SINH" Width="140">
                             <GridViewColumn.CellTemplate >
                                 <DataTemplate >
                                     <Grid >
-                                        <TextBlock Width="120"  Text="{Binding Birthday}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                        <TextBlock Width="140"  Text="{Binding Birthday}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
                                     </Grid>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="ĐỊA CHỈ" Width="150">
+                        <GridViewColumn Header="ĐỊA CHỈ" Width="230">
                             <GridViewColumn.CellTemplate >
                                 <DataTemplate >
                                     <Grid >
-                                        <TextBlock Width="150" Text="{Binding Address}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
+                                        <TextBlock Width="210" Text="{Binding Address}" Style="{StaticResource ListViewDataTextBlockStyle}"/>
                                     </Grid>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="TÙY CHỌN " Width="120">
-                            <GridViewColumn.CellTemplate >
-                                <DataTemplate >
-                                    <Grid >
-                                       
-                                        <Button x:Name="btnChuyenLop" Content="Chuyển lớp" Background="#FF8295C7" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                    </Grid>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+
                     </GridView>
                 </ListView.View>
-                
+
 
             </ListView>
         </Grid>
@@ -190,5 +169,9 @@
                                  x:Name="ClearFilterButtonClassGroup" MouseDoubleClick="ClearFilterButtonClass_MouseDown"/>
             </StackPanel>
         </DockPanel>
+        <Button x:Name="AddStudentsToClass" Content="Thêm học sinh" HorizontalAlignment="Left" Margin="57,26,0,0" Grid.Row="1" VerticalAlignment="Top" Width="128" Height="39" Click="AddStudentsToClass_Click"/>
+        <Button x:Name="DeleteClass" Content="Xóa lớp" HorizontalAlignment="Left" Margin="227,26,0,0" Grid.Row="1" VerticalAlignment="Top" Width="102" Height="39" Click="DeleteClass_Click"/>
+        <Button x:Name="ChangeClass" Content="Chuyển lớp" HorizontalAlignment="Left" Margin="964,26,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Height="39" Click="ChangeClass_Click"/>
+   
     </Grid>
 </UserControl>

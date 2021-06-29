@@ -26,7 +26,6 @@ namespace GUI.UserControls
         {
             InitializeComponent();
             _student = student;
-
             DataContext = _student;
         }
     }

@@ -91,6 +91,15 @@ namespace DAO
                 return output;
             }
         }
+        //Xóa lớp
+        public void DeleteClass(int idClass)
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                 _dbConnection.Query<Class>($"DELETE from CLASS where CLASS_ID ='{idClass}'");    
+            }
+        }
         /// <summary>
         /// Lấy ds báo cáo tổng kết theo môn học / học kỳ
         /// </summary>

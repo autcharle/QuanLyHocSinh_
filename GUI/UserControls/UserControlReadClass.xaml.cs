@@ -23,8 +23,10 @@ namespace GUI.UserControls
     public partial class UserControlReadClass : UserControl
     {
         List<Class> _classes = new List<Class>();
+        List<Student> _students = new List<Student>();
         BUS_Student _busStudent = new BUS_Student();
         BUS_Class _busClass = new BUS_Class();
+        BUS_Config _busConfig = new BUS_Config();
         List<Class> _classGroups = new List<Class>();
         public UserControlReadClass()
         {
@@ -70,6 +72,7 @@ namespace GUI.UserControls
         }
         private void DisplayClass()
         {
+           
             if (SearchTextBox.Text == null)
             {
                 if (ClassGroupComboBox.SelectedItem == null)
@@ -108,15 +111,65 @@ namespace GUI.UserControls
             }
         }
 
-        private void btnXemDS_Click(object sender, RoutedEventArgs e)
+
+        private void ListViewClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _classes = _busClass.GetAllClass();
-            var item = (sender as FrameworkElement).DataContext;
-            int index = ListViewClass.Items.IndexOf(item);
-            DisplayClass();
-            ListViewClass.SelectedIndex = index;
-            var output = _busStudent.ReadStudentByClassID(_classes[index].Class_ID);
-            ListViewStudentList.ItemsSource = output;
+            if (ListViewClass.SelectedIndex != -1)
+            {    
+                int index = ListViewClass.SelectedIndex;
+                _students = _busStudent.ReadStudentByClassID(_classes[index].Class_ID);
+                var output = _students;
+                ListViewStudentList.ItemsSource = output;
+            }
+        }
+
+        private void DeleteClass_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewClass.SelectedIndex != -1)
+            {
+                if (MessageBox.Show( "Xác nhận xóa lớp "+_classes[ListViewClass.SelectedIndex].Class_Name+" ?", "Xóa lớp", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                    return;
+                }
+                else
+                {
+                    //get function delete class
+                    _busClass.DeleteClass(_classes[ListViewClass.SelectedIndex].Class_ID);
+                    MessageBox.Show("Xóa lớp thành công!");
+                    
+                    _classGroups = _busClass.GetAllClassGroup();
+                    ClassGroupComboBox.ItemsSource = _classGroups;
+                    DisplayClass();
+                }
+            }
+        }
+
+        private void ChangeClass_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewStudentList.SelectedIndex != -1 && ListViewClass.SelectedIndex != -1)
+            {
+               int indexClass = ListViewClass.SelectedIndex;
+                int indexStudent = ListViewStudentList.SelectedIndex;
+
+                WindowChangeClassForStudent objChange = new WindowChangeClassForStudent(_students[indexStudent],_classes[indexClass]);
+                objChange.ShowDialog();
+                DisplayClass();
+                ListViewClass.SelectedIndex = 0;
+            }
+        }
+
+        private void AddStudentsToClass_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewClass.SelectedIndex != -1)
+            {
+                if (_classes[ListViewClass.SelectedIndex].NumberMember < _busConfig.GetMaxStudentClass())
+                {
+                    WindowAddStudentsToClass objAdd = new WindowAddStudentsToClass(_classes[ListViewClass.SelectedIndex]);
+                    objAdd.Show();
+                    DisplayClass();
+                }
+                else MessageBox.Show("Số lượng lớp đã đầy!");
+            }
         }
     }
 }
