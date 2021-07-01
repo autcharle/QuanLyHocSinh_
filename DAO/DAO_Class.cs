@@ -158,15 +158,16 @@ namespace DAO
                 {
                     var queryString = $@"SELECT CLASS.CLASS_NAME AS Class_Name,
 		                                    count(STUDENT.STUDENT_ID) AS SiSo,
-		                                    count(CASE WHEN POINT.[AVG] >= {scorePass} THEN POINT.[AVG] END) AS Pass
+		                                    count(CASE WHEN {semesisId} = 1 and STUDENT.[AVG_S1] >= {scorePass} THEN STUDENT.[AVG_S1] 
+                                                       WHEN {semesisId} = 2 and STUDENT.[AVG_S2] >= {scorePass} THEN STUDENT.[AVG_S2]
+                                                        END) AS Pass
                                     FROM CLASS INNER JOIN STUDENT ON CLASS.CLASS_ID = STUDENT.CLASS_ID
-	                                    LEFT JOIN POINT ON POINT.STUDENT_ID = STUDENT.STUDENT_ID
                                     WHERE 1=1 ";
-                    if (semesisId != 0)
-                    {
-                        queryString += " AND POINT.SEMESTER = @SEMESTER ";
-                        parameters.Add("@SEMESTER", semesisId);
-                    }
+                    //if (semesisId != 0)
+                    //{
+                    //    queryString += " AND POINT.SEMESTER = @SEMESTER ";
+                    //    parameters.Add("@SEMESTER", semesisId);
+                    //}
                     queryString += "GROUP BY CLASS.CLASS_ID,CLASS.CLASS_NAME";
                     var output =  _dbConnection.Query<DTO_Subject_Report>(queryString, parameters);
                     return output.ToList();
