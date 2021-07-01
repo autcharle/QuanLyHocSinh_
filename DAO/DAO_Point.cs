@@ -49,5 +49,24 @@ namespace DAO
                 });
             }
         }
+
+        public List<Point> getAll()
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                var output = _dbConnection.Query<Point>($"select * from POINT").ToList();
+                return output;
+            }
+        }
+
+        public void updatePointForStudent(Point _point)
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                var affectedRows = _dbConnection.Execute($"update POINT set POINT_15 = '{_point.Point_15}', POINT_45 = '{_point.Point_45}', POINT_CK = '{_point.Point_CK}' where STUDENT_ID = '{_point.Student_ID}' AND SEMESTER = '{_point.Semester}' AND SUBJECT_ID = '{_point.Subject_ID}'");
+            }
+        }
     }
 }

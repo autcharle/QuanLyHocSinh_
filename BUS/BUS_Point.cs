@@ -10,13 +10,14 @@ namespace BUS
 {
     public class BUS_Point
     {
+        DAO_Point _daoMark = new DAO_Point();
         DAO_Point _daoPoint = new DAO_Point();
         BUS_Subject _busSubject = new BUS_Subject();
 
         public bool DeletePointByStudentID(int ID) => _daoPoint.DeletePointByStudentID(ID);
         public double? CalAverageOneSubjectMarkBySemester(int? IDSubject, int? IDStudent, int? IDSemester)
         {
-            var outputObj = _daoPoint.GetOneSubjectMarkBySemester(IDSubject, IDStudent, IDSemester);
+            var outputObj = _daoMark.GetOneSubjectMarkBySemester(IDSubject, IDStudent, IDSemester);
             if (outputObj.Count() <= 0)
             {
                 return 0;
@@ -48,7 +49,21 @@ namespace BUS
             if (_point.Point_15 > 10 || _point.Point_15 <0) return false;
             if (_point.Point_45 > 10 || _point.Point_45 < 0) return false;
             if (_point.Point_CK > 10 || _point.Point_CK < 0) return false;
-            _daoPoint.InsertPointForStudent(_point);
+            _daoMark.InsertPointForStudent(_point);
+            return true;
+        }
+
+        public List<Point> getAll()
+        {
+            return _daoMark.getAll();
+        }
+
+        public bool updatePointForStudent(Point _point)
+        {
+            if (_point.Point_15 > 10 || _point.Point_15 < 0) return false;
+            if (_point.Point_45 > 10 || _point.Point_45 < 0) return false;
+            if (_point.Point_CK > 10 || _point.Point_CK < 0) return false;
+            _daoMark.updatePointForStudent(_point);
             return true;
         }
     }
