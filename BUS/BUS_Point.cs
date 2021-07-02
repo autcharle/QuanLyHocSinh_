@@ -11,6 +11,7 @@ namespace BUS
     public class BUS_Point
     {
         DAO_Point _daoMark = new DAO_Point();
+        DAO_Student _daoStudent = new DAO_Student();
         BUS_Subject _busSubject = new BUS_Subject();
 
         public double? CalAverageOneSubjectMarkBySemester(int? IDSubject, int? IDStudent, int? IDSemester)
@@ -48,8 +49,15 @@ namespace BUS
             if (_point.Point_45 > 10 || _point.Point_45 < 0) return false;
             if (_point.Point_CK > 10 || _point.Point_CK < 0) return false;
             _daoMark.InsertPointForStudent(_point);
-<<<<<<< Updated upstream
-=======
+            var _avg = Math.Round((double)CalAverageAllSubjectMarkBySemester(_point.Student_ID, _point.Semester), 2);
+            if (_point.Semester == 1)
+            {
+                _daoStudent.UpdateAVGS1ForStudent(_point.Student_ID, _avg);
+            }
+            else
+            {
+                _daoStudent.UpdateAVGS2ForStudent(_point.Student_ID, _avg);
+            }
             return true;
         }
 
@@ -64,7 +72,15 @@ namespace BUS
             if (_point.Point_45 > 10 || _point.Point_45 < 0) return false;
             if (_point.Point_CK > 10 || _point.Point_CK < 0) return false;
             _daoMark.updatePointForStudent(_point);
->>>>>>> Stashed changes
+            var _avg = Math.Round((double)CalAverageAllSubjectMarkBySemester(_point.Student_ID, _point.Semester), 2);
+            if (_point.Semester == 1)
+            {
+                _daoStudent.UpdateAVGS1ForStudent(_point.Student_ID, _avg);
+            }
+            else
+            {
+                _daoStudent.UpdateAVGS2ForStudent(_point.Student_ID, _avg);
+            }
             return true;
         }
     }

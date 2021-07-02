@@ -67,5 +67,25 @@ namespace DAO
                 return output;
             }
         }
+
+        public void UpdateAVGS1ForStudent(int? IDStudent, double? _avg)
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                _dbConnection.Query<Student>($" UPDATE STUDENT SET AVG_S1 ='{_avg}' where STUDENT_ID = '{IDStudent}'");
+
+            }
+        }
+
+        public void UpdateAVGS2ForStudent(int? IDStudent, double? _avg)
+        {
+            DBConnect _dbContext = new DBConnect();
+            using (IDbConnection _dbConnection = _dbContext.CreateConnection())
+            {
+                _dbConnection.Query<Student>($" UPDATE STUDENT SET AVG_S2 ='{_avg}' where STUDENT_ID = '{IDStudent}'");
+
+            }
+        }
     }
 }
